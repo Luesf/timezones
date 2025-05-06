@@ -17,12 +17,12 @@ export function Conversion() {
     const handleChange = (event) => {
       if (value === "Los Angeles") {
         const date = new Date(`1970-01-01T${meetingTime}`);
-        const guatemalaTime = new Date(date.getTime() - 1 * 60 * 60 * 1000);
+        const guatemalaTime = new Date(date.getTime() + 1 * 60 * 60 * 1000);
         setMeetingTimeGuatemala(guatemalaTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
       }
       else if (value === "Pittsburgh") {
         const date = new Date(`1970-01-01T${meetingTime}`);
-        const guatemalaTime = new Date(date.getTime() + 2 * 60 * 60 * 1000);
+        const guatemalaTime = new Date(date.getTime() - 2 * 60 * 60 * 1000);
         setMeetingTimeGuatemala(guatemalaTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
       }
       
