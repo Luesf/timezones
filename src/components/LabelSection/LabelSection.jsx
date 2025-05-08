@@ -10,15 +10,22 @@ export function LabelSection() {
 
     useEffect(() => {
         const fetchTime = async () => {
-            try {
-                const responseGuatemala = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Guatemala");
-                const dataGuatemala = await responseGuatemala.json();
+
+            try{
+                const [guatemalaResponse, pittsburghResponse, losAngelesResponse] = await Promise.all([
+                    fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Guatemala"),
+                    fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Toronto"),
+                    fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Los_Angeles")
+                ]);
+    
+                const [dataGuatemala, dataPittsburgh, dataLosAngeles] = await Promise.all([
+                    guatemalaResponse.json(),
+                    pittsburghResponse.json(),
+                    losAngelesResponse.json()
+                ]);
+    
                 setTimeGuatemala(dataGuatemala.time);
-                const responsePittsburgh = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Toronto");
-                const dataPittsburgh = await responsePittsburgh.json();
                 setTimePittsburgh(dataPittsburgh.time);
-                const responseLosAngeles = await fetch("https://www.timeapi.io/api/Time/current/zone?timeZone=America/Los_Angeles");
-                const dataLosAngeles = await responseLosAngeles.json();
                 setTimeLosAngeles(dataLosAngeles.time);
             } catch (error) {
                 console.error("Error fetching time:", error);
