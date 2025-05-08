@@ -127,12 +127,22 @@
     width: 90%
   }
   .response-label {
-    font-size: 15px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .response-label p {
+    font-size: 16px;
+  }
+  .locations-container {
+    margin-top: 25px;
   }
   .conversion-content h2 {
     font-size: 20px;
   }
   .locations-container p {
-    font-size: 15px;
+    font-size: 14px;
+  }
+  .locations-container p span {
+    font-size: 16px;
   }
 }
