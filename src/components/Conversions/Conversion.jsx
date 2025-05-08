@@ -12,23 +12,37 @@ export function Conversion() {
     const [value, setValue] = useState("Los Angeles");
     const [meetingTime, setMeetingTime] = useState("");
     const [meetingTimeGuatemala, setMeetingTimeGuatemala] = useState("");
-    const [animate, setAnimate] = useState(false);
+    const [meetingTimePittsburgh, setMeetingTimePittsburgh] = useState("");
+    const [meetingTimeLosAngeles, setMeetingTimeLosAngeles] = useState("");
+    const [animateMainLabel, setAnimateMainLabel] = useState(false);
+    const [animateLocations, setAnimateLocations] = useState(false);
+    const [unhide, setUnhide] = useState(false);
+    
 
     const handleChange = (event) => {
       if (value === "Los Angeles") {
         const date = new Date(`1970-01-01T${meetingTime}`);
         const guatemalaTime = new Date(date.getTime() + 1 * 60 * 60 * 1000);
+        const pittsburghTime = new Date(date.getTime() + 3 * 60 * 60 * 1000);
+        setMeetingTimeLosAngeles(date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
         setMeetingTimeGuatemala(guatemalaTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+        setMeetingTimePittsburgh(pittsburghTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
       }
       else if (value === "Pittsburgh") {
         const date = new Date(`1970-01-01T${meetingTime}`);
         const guatemalaTime = new Date(date.getTime() - 2 * 60 * 60 * 1000);
+        const losAngelesTime = new Date(date.getTime() - 3 * 60 * 60 * 1000);
+        setMeetingTimePittsburgh(date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
         setMeetingTimeGuatemala(guatemalaTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+        setMeetingTimeLosAngeles(losAngelesTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
       }
-      
-      setAnimate(true);
+
+      setUnhide(true);
+      setAnimateMainLabel(true);
+      setAnimateLocations(true);
       setTimeout(() => {
-        setAnimate(false);
+        setAnimateMainLabel(false);
+        setAnimateLocations(false);
       }, 1000);
     }
 
@@ -48,7 +62,13 @@ export function Conversion() {
                     <Button variant="plain" color="primary" onClick={handleChange} size="lg"><UpdateIcon /></Button>
                   </div>
                 </div>
-                <label className={animate ? "response-label animate": "response-label"}>Set your meeting at<p>{meetingTimeGuatemala}</p>Guatemala time!</label>
+                {unhide && <label className={animateMainLabel ? "response-label animate-main-label": "response-label"}>Set your meeting at<p>{meetingTimeGuatemala.replace(/\s/g, '')}</p>Guatemala time!</label>}
+                {unhide && <div className="locations-container">
+                  <p>Los Angeles time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimeLosAngeles.replace(/\s/g, '')}</span></div></p>
+                  <p>Guatemala time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimeGuatemala.replace(/\s/g, '')}</span></div></p>
+                  <p>Pittsburgh time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimePittsburgh.replace(/\s/g, '')}</span></div></p>
+                </div>
+                }
             </div>
         </div>
     )

@@ -17,27 +17,30 @@
     font-size: 35px;
     font-weight: lighter;
     color: dimgray;
+    margin-top: 10px;
 }
 
 .response-label {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
-    margin-top: 30px;
+    gap: 9px;
+    margin-top: 15px;
     text-align: center;
     font-size: 25px;
     font-weight: 350;
     color: #624E88;
 }
 
-.animate {
-    animation: zoom-in-zoom-out 0.5s ease;
+.animate-main-label {
+    animation: zoom-in-zoom-out 0.3s ease;
 }
 
 .response-label p {
     font-weight: bold;
-    color: #8E7DBE;
+    background: linear-gradient(to right, #764BA2, #667EEA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .input-container {
@@ -58,26 +61,78 @@
     padding: 0 10px 0 10px;
 }
 
+.locations-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.locations-container p {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: 350;
+    color: #624E88;
+}
+
+.animation-frame {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.locations-container p span {
+    font-weight: 600;
+    background: linear-gradient(to right, #764BA2, #667EEA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.animate-locations {
+    animation: slidein 1.5s ease;
+}
+
+.hide {
+    display: hidden;
+}
+
 @keyframes zoom-in-zoom-out {
     0% {
       scale: 100%;
     }
     50% {
-      scale: 125%;
+      scale: 120%;
     }
     100% {
       scale: 100%;
     }
   }
 
-  @media (max-width: 767px) {
-    .conversion-content {
-      width: 90%
-    }
-    .response-label {
-      font-size: 15px;
-    }
-    .conversion-content h2 {
-      font-size: 20px;
-    }
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:355px;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-80px; }
+    5% { margin-left:-80px; }
+    40% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@media (max-width: 767px) {
+  .conversion-content {
+    width: 90%
   }
+  .response-label {
+    font-size: 15px;
+  }
+  .conversion-content h2 {
+    font-size: 20px;
+  }
+  .locations-container p {
+    font-size: 15px;
+  }
+}
