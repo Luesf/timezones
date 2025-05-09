@@ -58,15 +58,21 @@ export function Conversion() {
                     </ToggleButtonGroup>
                   </div>
                   <div className="input-group">
-                    <TextField id="outlined-number" label="Meeting time?" placeholder="24hr format" variant="outlined" color="secondary" value={meetingTime} onChange={(event) => setMeetingTime(event.target.value)} />
+                    <TextField type="time" id="outlined" label="Meeting time?" variant="outlined" color="secondary" value={meetingTime} onChange={(event) => setMeetingTime(event.target.value)} slotProps={{inputLabel: {shrink: true}, htmlInput: {step: 300}}}/>
                     <Button variant="plain" color="primary" onClick={handleChange} size="lg"><UpdateIcon /></Button>
                   </div>
                 </div>
                 {unhide && <label className={animateMainLabel ? "response-label animate-main-label": "response-label"}>Set your meeting at<p>{meetingTimeGuatemala.replace(/\s/g, '')}</p>Guatemala time!</label>}
                 {unhide && <div className="locations-container">
-                  <p>Los Angeles time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimeLosAngeles.replace(/\s/g, '')}</span></div></p>
-                  <p>Guatemala time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimeGuatemala.replace(/\s/g, '')}</span></div></p>
-                  <p>Pittsburgh time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimePittsburgh.replace(/\s/g, '')}</span></div></p>
+                  <div className="location-label">
+                    <p>Los Angeles time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimeLosAngeles.replace(/\s/g, '')}</span></div></p>
+                  </div>
+                  <div className="location-label">
+                    <p>Guatemala time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimeGuatemala.replace(/\s/g, '')}</span></div></p>
+                  </div>
+                  <div className="location-label">
+                    <p>Pittsburgh time is &#8594; <div className="animation-frame"><span className={animateLocations ? "animate-locations": ""}>{meetingTimePittsburgh.replace(/\s/g, '')}</span></div></p>
+                  </div>
                 </div>
                 }
             </div>

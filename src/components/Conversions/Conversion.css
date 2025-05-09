@@ -25,7 +25,8 @@
     align-items: center;
     justify-content: center;
     gap: 9px;
-    margin-top: 15px;
+    margin: 15px 0 15px 0;
+    padding: 15px 28px 15px 28px;
     text-align: center;
     font-size: 25px;
     font-weight: 350;
@@ -37,6 +38,7 @@
 }
 
 .response-label p {
+    margin: 0;
     font-weight: bold;
     background: linear-gradient(to right, #764BA2, #667EEA);
     -webkit-background-clip: text;
@@ -67,12 +69,20 @@
     width: 100%;
 }
 
+.location-label {
+  display: inline-flex;
+}
+
 .locations-container p {
     display: flex;
     gap: 15px;
     font-size: 20px;
     font-weight: 350;
+    padding: 12px 20px 12px 20px;
+    margin: 7px 0 7px 0;
     color: #624E88;
+    background: linear-gradient(to bottom, #f8cef8, #fadcfa, #faeafa);
+    border-radius: 15px;
 }
 
 .animation-frame {
