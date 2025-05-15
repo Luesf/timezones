@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 export function Conversion() {
 
     const [value, setValue] = useState("Los Angeles");
-    const [meetingTime, setMeetingTime] = useState("");
+    const [meetingTime, setMeetingTime] = useState("12:00");
     const [meetingTimeGuatemala, setMeetingTimeGuatemala] = useState("");
     const [meetingTimePittsburgh, setMeetingTimePittsburgh] = useState("");
     const [meetingTimeLosAngeles, setMeetingTimeLosAngeles] = useState("");
